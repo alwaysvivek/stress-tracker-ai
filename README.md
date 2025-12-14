@@ -9,7 +9,14 @@
 
 **StressTracker AI** is a privacy-focused, local-first application that analyzes your digital biomarkers (mouse movements, keystroke dynamics) to detect stress and cognitive load in real-time.
 
-![StressTracker Demo](docs/demo.webp)
+### Dashboard Preview
+![Home Screen](docs/images/01_home.png)
+
+### Analysis Results
+| Stress Metrics | Chat with Dr. AI |
+|:---:|:---:|
+| ![Results](docs/images/02_results.png) | ![Chat](docs/images/04_chat.png) |
+
 
 > 📘 **Technical Deep Dive**: Curious about the math? Check out the [Methodology & Signal Processing Docs](docs/index.html).
 
