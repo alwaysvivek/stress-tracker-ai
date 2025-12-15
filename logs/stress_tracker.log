@@ -81,3 +81,11 @@
 2026-01-13 01:32:25,242 - INFO - Agent initialized.
 2026-01-13 01:32:29,840 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 2026-01-13 01:34:12,156 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-01-13 01:43:40,212 - INFO - Tracker started successfully in background.
+2026-01-13 01:43:40,247 - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2026-01-13 01:43:40,250 - WARNING - This process is not trusted! Input event monitoring will not be possible until it is added to accessibility clients.
+2026-01-13 01:44:40,247 - INFO - Tracker stopped.
+2026-01-13 01:44:40,616 - INFO - Initializing StressManagementAgent...
+2026-01-13 01:44:40,627 - INFO - Agent initialized.
+2026-01-13 01:44:45,479 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-01-13 01:47:15,740 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
