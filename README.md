@@ -1,71 +1,69 @@
 # 🧠 StressTracker AI
 
-> **"Your digital wellbeing, monitored in real-time."**
+**Your digital wellbeing, monitored in real-time.**
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
 ![Ollama](https://img.shields.io/badge/Ollama-Local_AI-333333?style=for-the-badge&logo=ollama&logoColor=white)
 
-**StressTracker AI** is a privacy-focused, local-first application that analyzes your digital biomarkers (mouse movements, keystroke dynamics) to detect stress and cognitive load in real-time.
-
-### Dashboard Preview
-![Home Screen](docs/images/01_home.png)
-
-### Analysis Results
-| Stress Metrics | Chat with Dr. AI |
-|:---:|:---:|
-| ![Results](docs/images/02_results.png) | ![Chat](docs/images/04_chat.png) |
-
-
-> 📘 **Technical Deep Dive**: Curious about the math? Check out the [Methodology & Signal Processing Docs](docs/index.html).
-
+**StressTracker AI** is a privacy-focused, local-first application designed to monitor digital biomarkers—such as mouse movements and keystroke dynamics—to detect stress and cognitive load in real-time. By leveraging local AI, it provides personalized insights without compromising your data privacy.
 
 ---
 
 ## ✨ Features
 
-- **🖱️ Kinematic Analysis**: Tracks mouse jitter, path efficiency, and velocity to detect SNS (Sympathetic Nervous System) activation.
-- **⌨️ Keystroke Dynamics**: Analyzes flight time variance (ISO 9241-11) as a proxy for cognitive load.
-- **🤖 AI Agent**: Integrated Llama-3.2 based clinical psychiatrist persona provides actionable text-based feedback.
-- **📊 Real-time Dashboard**: Beautiful "Deep Space" aesthetic UI built with Streamlit.
-- **🔒 Privacy First**: All tracking happens locally on your machine. No raw input data leaves your device.
-
-## 🛠️ Tech Stack
-
-- **Frontend**: Streamlit (Python)
-- **Backend/Logic**: Pydantic, NumPy, SciPy (Python)
-- **Input Tracking**: `pynput` (System-wide hooks)
-- **AI/LLM**: Llama-3.2 (via LangChain & Ollama)
-- **Architecture**: Monolithic Local App
-
-## 🚀 How to Use
-
-### 1. Prerequisites
-- Python 3.9+
-- [Ollama](https://ollama.ai) installed (The script will automatically pull the model for you!)
-
-### 2. Installation & Run (All Platforms)
-
-Script that sets everything up for you (Virtual Environment + Dependencies + App Launch).
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/alwaysvivek/stress-tracker.git
-cd stresstracker
-
-# 2. Run the magic script
-python start.py
-```
-
-That's it! The app will open in your browser.
+- **🖱️ Kinematic Analysis**: Detects Sympathetic Nervous System (SNS) activation by tracking mouse jitter, path efficiency, and velocity.
+- **⌨️ Keystroke Dynamics**: Assessments cognitive load by analyzing flight time variance (ISO 9241-11).
+- **🤖 Dr. AI Assistant**: A Llama-3.2 powered clinical psychiatrist persona offering actionable, text-based feedback.
+- **📊 Real-time Dashboard**: An immersive "Deep Space" themed UI built with Streamlit for monitoring your status.
+- **🔒 Privacy First**: Completely local processing. No raw input data ever leaves your device.
 
 ---
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Python 3.9+**
+- **[Ollama](https://ollama.ai)**: Required for the AI agent. The application will automatically pull the `llama3.2` model if needed.
+
+### Installation & Run
+
+We provide a startup script that handles virtual environment creation, dependencies, and launching the application.
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/alwaysvivek/stress-tracker.git
+    cd stresstracker
+    ```
+
+2.  **Launch the application**:
+    ```bash
+    python start.py
+    ```
+
+The application will automatically open in your default web browser.
+
+---
+
+## 📊 Dashboard Overview
+
+### Main Interface
+![Home Screen](docs/images/01_home.png)
+
+### Analysis & Insights
+| Real-time Metrics | Dr. AI Consultation |
+|:---:|:---:|
+| ![Results](docs/images/02_results.png) | ![Chat](docs/images/04_chat.png) |
+
+> 📘 **Technical details**: For a deep dive into the mathematical models and signal processing, please refer to the [Methodology & Signal Processing Documentation](docs/index.html).
+
+---
 
 ## 🏗️ Architecture
 
-How the pieces fit together:
+The system operates as a monolithic local application to ensure system-wide tracking and privacy.
 
 ```mermaid
 graph TD
@@ -84,44 +82,38 @@ graph TD
     UI <-->|Chat| Agent
 ```
 
+### Why "Local Only"?
+
+> [!IMPORTANT]
+> **System-Wide Tracking**: To accurately analyze work stress, the application must track inputs across all applications (Excel, Slack, IDEs, etc.). Web browsers restrict this access for security reasons. Thus, StressTracker AI runs locally to utilize system-level hooks via `pynput` while keeping your data secure on your machine.
+
 ---
 
 ## 🔧 Troubleshooting
 
-### 1. "Ollama not found"
-The app requires Ollama to be installed and running.
-*   **Fix**: Install from [ollama.com](https://ollama.com).
-*   **Verify**: Run `ollama list` in your terminal. You should see `llama3.2`.
+### Common Issues
 
-### 2. "Input monitoring permission denied" (macOS)
-macOS requires explicit permission for apps to monitor keystrokes.
-*   **The Checkmark Lie**: Even if PyCharm is checked in System Settings, macOS often ignores it after an update or app restart.
-*   **The Fix**:
-    1.  Go to **System Settings > Privacy & Security > Input Monitoring**.
-    2.  Select `PyCharm` and **click the minus (-)** button to remove it entirely.
-    3.  Run the app again.
-    4.  macOS will prompt you to "Open System Settings". Click it and **Grant Permission** freshly.
-    5.  **Restart PyCharm** (completely quit, not just close window).
-*   **The Nuclear Option** (if above fails):
-    Run this in your terminal to clear the database:
-    ```bash
-    tccutil reset Accessibility
-    ```
-    Then restart your computer.
+**1. "Ollama not found"**
+- **Cause**: Ollama is not installed or running.
+- **Solution**: Install from [ollama.com](https://ollama.com) and verify with `ollama list` in your terminal.
 
-### 3. "ModuleNotFoundError"
-*   **Fix**: Ensure your virtual environment is active.
+**2. "Input monitoring permission denied" (macOS)**
+- **Cause**: macOS security restrictions blocking keystroke monitoring.
+- **Solution**:
+    1.  Navigate to **System Settings > Privacy & Security > Input Monitoring**.
+    2.  Remove `PyCharm` (or your terminal/IDE) using the **minus (-)** button.
+    3.  Restart the application and click **Grant Permission** when prompted.
+    4.  Restart your IDE/Terminal completely.
+- **Advanced Fix**: Run `tccutil reset Accessibility` in the terminal and potential restart your computer.
+
+**3. "ModuleNotFoundError"**
+- **Cause**: Dependencies not installed in the current environment.
+- **Solution**:
     ```bash
     source .venv/bin/activate
     pip install -r requirements.txt
     ```
 
 ---
-
-## 🌍 Why "Local Only"?
-
-You might wonder why this isn't a hosted web app.
-> [!IMPORTANT]
-> **System-Wide Tracking**: To analyze real work stress, the app needs to track mouse/keyboard usage *outside* the browser window (e.g., while you use Excel, Slack, IDEs). Web browsers strictly block this for security. Therefore, this app **must run locally** on your machine to access these operating system hooks via `pynput`.
 
 *Built with ❤️ for Digital Health*
